@@ -1,5 +1,4 @@
-<h2>Test</h2>
-
+<h2>BabySitter Information</h2>
 
 <form #babysitterInfo="ngForm" (ngSubmit)=calculate(babysitterInfo)>
   <mat-form-field>
@@ -9,5 +8,29 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input required matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Start Time" [(ngModel)]='start_time' name='start'>
+      <mat-option *ngFor="let start of starts" required [value]="start.value">
+        {{start.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="End Time" [(ngModel)]='end_time' name='end'>
+      <mat-option *ngFor="let end of ends" required [value]="end.value">
+        {{ends.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
   <button mat-raised-button color="accent">Calculate</button>
 </form>
