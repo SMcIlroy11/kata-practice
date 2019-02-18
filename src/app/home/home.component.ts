@@ -4,6 +4,9 @@ import { NgForm } from '@angular/forms';
 export interface Family {
     value: string;
     viewValue: string;
+    first_rate: number;
+    second_rate: number;
+    third_rate: number;
 }
 
 export interface Start {
@@ -28,9 +31,9 @@ export class HomeComponent implements OnInit {
     end_time;
     total_charge;
     families: Family[] = [
-        { value: 'family-a', viewValue: 'Family - A' },
-        { value: 'family-b', viewValue: 'Family - B' },
-        { value: 'family-c', viewValue: 'Family - C' }
+        { value: 'family-a', viewValue: 'Family - A', first_rate: 15, second_rate: 20, third_rate: null },
+        { value: 'family-b', viewValue: 'Family - B', first_rate: 12, second_rate: 8, third_rate: 16 },
+        { value: 'family-c', viewValue: 'Family - C', first_rate: 21, second_rate: 15, third_rate: null }
     ];
     starts: Start[] = [
         { value: 17, viewValue: '5 PM' },
@@ -70,23 +73,19 @@ export class HomeComponent implements OnInit {
     calculate(info) {
         const total_time = (this.end_time - this.start_time)
         if (info.value.family === 'family-a') {
-            if (this.start_time < 23 && this.end_time < 23) {
-                let time = this.end_time - this.start_time
-                let first_charge = time * 15
-                this.total_charge = first_charge
-            }
-            if (this.start_time < 23 && this.end_time >= 23) {
-                let first_segment = 23 - this.start_time
+            let first_segment = 23 - this.start_time
+            if (this.end_time > 23) {
                 let second_segment = this.end_time - 23
-                let first_charge = first_segment * 15
-                let second_charge = second_segment * 20
-                this.total_charge = first_charge + second_charge
+                let new_total = first_segment + second_segment
+                this.total_charge = (15 * first_segment) + (20 * second_segment);
             }
-            else if (this.start_time >= 23) {
-                let time = this.end_time - this.start_time;
-                this.total_charge = time * 20;
+            if (this.end_time <= 23) {
+                let first_segment = this.end_time - this.start_time
+                this.total_charge = (15 * first_segment)
             }
         }
     }
 
 }
+
+
