@@ -24,10 +24,13 @@ export interface End {
 
 
 export class HomeComponent implements OnInit {
+    start_time;
+    end_time;
+    total_charge;
     families: Family[] = [
-        { value: 'family-A', viewValue: 'Family - A' },
-        { value: 'family-B', viewValue: 'Family - B' },
-        { value: 'family-C', viewValue: 'Family - C' }
+        { value: 'family-a', viewValue: 'Family - A' },
+        { value: 'family-b', viewValue: 'Family - B' },
+        { value: 'family-c', viewValue: 'Family - C' }
     ];
     starts: Start[] = [
         { value: 17, viewValue: '5 PM' },
@@ -38,9 +41,9 @@ export class HomeComponent implements OnInit {
         { value: 22, viewValue: '10 PM' },
         { value: 23, viewValue: '11 PM' },
         { value: 24, viewValue: '12 PM' },
-        { value: 1, viewValue: '1 AM' },
-        { value: 2, viewValue: '2 AM' },
-        { value: 3, viewValue: '3 AM' }
+        { value: 25, viewValue: '1 AM' },
+        { value: 26, viewValue: '2 AM' },
+        { value: 27, viewValue: '3 AM' }
     ];
     ends: End[] = [
         { value: 18, viewValue: '6 PM' },
@@ -50,10 +53,10 @@ export class HomeComponent implements OnInit {
         { value: 22, viewValue: '10 PM' },
         { value: 23, viewValue: '11 PM' },
         { value: 24, viewValue: '12 PM' },
-        { value: 1, viewValue: '1 AM' },
-        { value: 2, viewValue: '2 AM' },
-        { value: 3, viewValue: '3 AM' },
-        { value: 4, viewValue: '4 AM' }
+        { value: 25, viewValue: '1 AM' },
+        { value: 26, viewValue: '2 AM' },
+        { value: 27, viewValue: '3 AM' },
+        { value: 28, viewValue: '4 AM' }
     ];
     minDate = new Date(2019, 2, 18);
     maxDate = new Date(2020, 0, 1);
@@ -65,8 +68,25 @@ export class HomeComponent implements OnInit {
     ngOnInit() { }
 
     calculate(info) {
-        console.log(info)
-        console.log(info.value.start)
+        const total_time = (this.end_time - this.start_time)
+        if (info.value.family === 'family-a') {
+            if (this.start_time < 23 && this.end_time < 23) {
+                let time = this.end_time - this.start_time
+                let first_charge = time * 15
+                this.total_charge = first_charge
+            }
+            if (this.start_time < 23 && this.end_time >= 23) {
+                let first_segment = 23 - this.start_time
+                let second_segment = this.end_time - 23
+                let first_charge = first_segment * 15
+                let second_charge = second_segment * 20
+                this.total_charge = first_charge + second_charge
+            }
+            else if (this.start_time >= 23) {
+                let time = this.end_time - this.start_time;
+                this.total_charge = time * 20;
+            }
+        }
     }
 
 }

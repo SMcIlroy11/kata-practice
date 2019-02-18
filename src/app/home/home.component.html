@@ -26,7 +26,7 @@
   <mat-form-field>
     <mat-select placeholder="End Time" [(ngModel)]='end_time' name='end'>
       <mat-option *ngFor="let end of ends" required [value]="end.value">
-        {{ends.viewValue}}
+        {{end.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -34,3 +34,5 @@
 
   <button mat-raised-button color="accent">Calculate</button>
 </form>
+
+<h4 *ngIf="total_charge">The total charge is {{total_charge}}</h4>
