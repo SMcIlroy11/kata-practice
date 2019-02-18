@@ -1,0 +1,13 @@
+<h2>Test</h2>
+
+
+<form #babysitterInfo="ngForm" (ngSubmit)=calculate(babysitterInfo)>
+  <mat-form-field>
+    <mat-select placeholder="Family" [(ngModel)]='family' name='family'>
+      <mat-option *ngFor="let family of families" required [value]="family.value">
+        {{family.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="accent">Calculate</button>
+</form>
