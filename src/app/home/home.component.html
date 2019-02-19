@@ -8,15 +8,9 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <!-- 
-  <mat-form-field class="example-full-width">
-    <input required matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field> -->
 
   <mat-form-field>
-    <mat-select placeholder="Start Time" [(ngModel)]='start_time' name='start' required>
+    <mat-select id='start' placeholder="Start Time" [(ngModel)]='start_time' name='start' required>
       <mat-option *ngFor="let start of starts" [value]="start.value">
         {{start.viewValue}}
       </mat-option>
@@ -24,7 +18,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="End Time" [(ngModel)]='end_time' name='end' required>
+    <mat-select id='end' placeholder="End Time" [(ngModel)]='end_time' name='end' required>
       <mat-option *ngFor="let end of ends" [value]="end.value">
         {{end.viewValue}}
       </mat-option>

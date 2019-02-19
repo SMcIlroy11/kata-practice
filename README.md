@@ -1,6 +1,29 @@
 # PillarKata
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+
+
+##Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+##Installing
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2. You will need the Angular CLI to run the project. If you do not have it globally installed, run:
+
+`npm install -g @angular/cli`
+
+Create a directory where you would like to clone down the project
+
+`mkdir babysitter-kata`
+`cd babysitter-kata`
+
+Then clone down the project:
+
+`git clone https://github.com/SMcIlroy11/kata-practice.git`
+
+Install node packages
+
+`npm install`
 
 ## Development server
 
