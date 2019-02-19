@@ -64,8 +64,6 @@ export class HomeComponent implements OnInit {
     minDate = new Date(2019, 2, 18);
     maxDate = new Date(2020, 0, 1);
 
-
-
     constructor() { }
 
     ngOnInit() { }
@@ -117,10 +115,10 @@ export class HomeComponent implements OnInit {
                 let second_segment = this.end_time - 22
                 this.total_charge = (second_segment * 8)
             }
-            if (this.start_time >= 22 && this.end_time > 24) {
+            if (this.start_time >= 22 && this.start_time < 24 && this.end_time > 24) {
                 let second_segment = 2
                 let third_segment = this.end_time - 24
-                this.total_charge = (second_segment * 8) + (third_segment * 12)
+                this.total_charge = (second_segment * 8) + (third_segment * 16)
             }
             else if (this.start_time >= 24) {
                 this.total_charge = total_time * 16;
