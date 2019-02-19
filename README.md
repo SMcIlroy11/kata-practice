@@ -8,7 +8,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ##Installing
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2. You will need the Angular CLI to run the project. If you do not have it globally installed, run:
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2. You will need Git, Node and the Angular CLI to run the project. 
+
+If you do not have Git installed, go to https://git-scm.com/book/en/v2/Getting-Started-Installing-Git to install.
+
+If you do not have Node installed, go to https://nodejs.org/en/download/ to install.
+
+
+If you do not have Angular globally installed, run:
 
 `npm install -g @angular/cli`
 
