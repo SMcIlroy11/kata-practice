@@ -1,0 +1,38 @@
+<h2>BabySitter Information</h2>
+
+<form #babysitterInfo="ngForm" (ngSubmit)=calculate(babysitterInfo)>
+  <mat-form-field>
+    <mat-select placeholder="Family" [(ngModel)]='family' name='family' required>
+      <mat-option *ngFor="let family of families" [value]="family.value">
+        {{family.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select id='start' placeholder="Start Time" [(ngModel)]='start_time' name='start' required>
+      <mat-option *ngFor="let start of starts" [value]="start.value">
+        {{start.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select id='end' placeholder="End Time" [(ngModel)]='end_time' name='end' required>
+      <mat-option *ngFor="let end of ends" [value]="end.value">
+        {{end.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button [disabled]="end_time < start_time || start_time === end_time && start_time " color="accent">Calculate</button>
+
+
+  <div>
+    <span class="error" *ngIf="end_time < start_time">End time cannot be before start time</span>
+    <span class="error" *ngIf="start_time === end_time && start_time">Start time and end time cannot be the same</span>
+  </div>
+
+
+</form>
+
+<h4 *ngIf="total_charge">The total charge is {{total_charge}}</h4>
